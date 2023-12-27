@@ -34,26 +34,26 @@ public static unsafe class XInput
 
         if (AllowUnofficialAPI)
         {
-            s_XInputGetState = (delegate* unmanaged<int, out State, int>)GetExport("#100");
+            s_XInputGetState = (delegate* unmanaged[Stdcall]<int, out State, int>)GetExport("#100");
         }
         else
         {
-            s_XInputGetState = (delegate* unmanaged<int, out State, int>)GetExport("XInputGetState");
+            s_XInputGetState = (delegate* unmanaged[Stdcall]<int, out State, int>)GetExport("XInputGetState");
         }
 
-        s_XInputSetState = (delegate* unmanaged<int, Vibration*, int>)GetExport("XInputSetState");
-        s_XInputGetCapabilities = (delegate* unmanaged<int, DeviceQueryType, out Capabilities, int>)GetExport("XInputGetCapabilities");
+        s_XInputSetState = (delegate* unmanaged[Stdcall]<int, Vibration*, int>)GetExport("XInputSetState");
+        s_XInputGetCapabilities = (delegate* unmanaged[Stdcall]<int, DeviceQueryType, out Capabilities, int>)GetExport("XInputGetCapabilities");
 
         if (Version != XInputVersion.Version910)
         {
-            s_XInputEnable = (delegate* unmanaged<int, void>)GetExport("XInputEnable");
-            s_XInputGetBatteryInformation = (delegate* unmanaged<int, BatteryDeviceType, out BatteryInformation, int>)GetExport("XInputGetBatteryInformation");
-            s_XInputGetKeystroke = (delegate* unmanaged<int, uint, out Keystroke, int>)GetExport("XInputGetKeystroke");
+            s_XInputEnable = (delegate* unmanaged[Stdcall]<int, void>)GetExport("XInputEnable");
+            s_XInputGetBatteryInformation = (delegate* unmanaged[Stdcall]<int, BatteryDeviceType, out BatteryInformation, int>)GetExport("XInputGetBatteryInformation");
+            s_XInputGetKeystroke = (delegate* unmanaged[Stdcall]<int, uint, out Keystroke, int>)GetExport("XInputGetKeystroke");
         }
 
         if (Version == XInputVersion.Version14)
         {
-            s_XInputGetAudioDeviceIds = (delegate* unmanaged<int, IntPtr, IntPtr, IntPtr, IntPtr, uint>)GetExport("XInputGetAudioDeviceIds");
+            s_XInputGetAudioDeviceIds = (delegate* unmanaged[Stdcall]<int, IntPtr, IntPtr, IntPtr, IntPtr, uint>)GetExport("XInputGetAudioDeviceIds");
         }
     }
 

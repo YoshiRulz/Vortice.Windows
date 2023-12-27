@@ -72,5 +72,8 @@
   <ItemGroup>
     <PackageReference Include="PolySharp" />
   </ItemGroup>
+  <PropertyGroup>
+    <PolySharpIncludeRuntimeSupportedAttributes>true</PolySharpIncludeRuntimeSupportedAttributes>
+  </PropertyGroup>
 
 </Project>
