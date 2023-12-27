@@ -69,4 +69,8 @@
     <AssemblyOriginatorKeyFile>$(MSBuildThisFileDirectory)Vortice.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="PolySharp" />
+  </ItemGroup>
+
 </Project>

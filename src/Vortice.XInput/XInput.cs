@@ -6,14 +6,14 @@ namespace Vortice.XInput;
 public static unsafe class XInput
 {
     private static readonly nint s_xinputLibrary;
-    private static readonly delegate* unmanaged<int, out State, int> s_XInputGetState;
-    private static readonly delegate* unmanaged<int, Vibration*, int> s_XInputSetState;
-    private static readonly delegate* unmanaged<int, DeviceQueryType, out Capabilities, int> s_XInputGetCapabilities;
+    private static readonly delegate* unmanaged[Stdcall]<int, out State, int> s_XInputGetState;
+    private static readonly delegate* unmanaged[Stdcall]<int, Vibration*, int> s_XInputSetState;
+    private static readonly delegate* unmanaged[Stdcall]<int, DeviceQueryType, out Capabilities, int> s_XInputGetCapabilities;
 
-    private static readonly delegate* unmanaged<int, void> s_XInputEnable;
-    private static readonly delegate* unmanaged<int, BatteryDeviceType, out BatteryInformation, int> s_XInputGetBatteryInformation;
-    private static readonly delegate* unmanaged<int, uint, out Keystroke, int> s_XInputGetKeystroke;
-    private static readonly delegate* unmanaged<int, IntPtr, IntPtr, IntPtr, IntPtr, uint> s_XInputGetAudioDeviceIds;
+    private static readonly delegate* unmanaged[Stdcall]<int, void> s_XInputEnable;
+    private static readonly delegate* unmanaged[Stdcall]<int, BatteryDeviceType, out BatteryInformation, int> s_XInputGetBatteryInformation;
+    private static readonly delegate* unmanaged[Stdcall]<int, uint, out Keystroke, int> s_XInputGetKeystroke;
+    private static readonly delegate* unmanaged[Stdcall]<int, IntPtr, IntPtr, IntPtr, IntPtr, uint> s_XInputGetAudioDeviceIds;
 
     public static readonly XInputVersion Version = XInputVersion.Invalid;
 
