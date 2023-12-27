@@ -4,6 +4,7 @@
     <RepoRootPath>$(MSBuildThisFileDirectory)</RepoRootPath>
   </PropertyGroup>
 
+
   <PropertyGroup>
     <RepositoryUrl>https://github.com/amerkoleci/Vortice.Windows</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
