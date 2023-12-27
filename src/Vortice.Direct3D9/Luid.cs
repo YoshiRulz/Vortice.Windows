@@ -1,4 +1,4 @@
-// Copyright © Amer Koleci and Contributors.
+// Copyright ï¿½ Amer Koleci and Contributors.
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
 using System.Diagnostics.Contracts;
@@ -10,7 +10,9 @@ namespace Vortice.Direct3D9;
 /// A locally unique identifier for a graphics device.
 /// </summary>
 public readonly struct Luid : IEquatable<Luid>
+#if NET6_0_OR_GREATER
     , ISpanFormattable
+#endif
 {
     /// <summary>
     /// The low bits of the luid.

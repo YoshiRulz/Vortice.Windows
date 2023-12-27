@@ -84,6 +84,9 @@ public static partial class Dxc
     public const int DXC_CP_UTF16 = 1200;
     public const int DXC_CP_ACP = 0;
 
+#if !NETCOREAPP3_0_OR_GREATER
+    public delegate nint DllImportResolver(string libraryName, Assembly assembly, DllImportSearchPath? searchPath);
+#endif
     public static event DllImportResolver? ResolveLibrary;
 
     static Dxc()

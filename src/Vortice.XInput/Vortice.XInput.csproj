@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Shim4DotNetFramework.NativeLibrary" />
     <Using Include="System.Runtime.InteropServices" />
   </ItemGroup>
 
