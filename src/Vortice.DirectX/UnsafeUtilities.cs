@@ -1,4 +1,4 @@
-// Copyright © Amer Koleci and Contributors.
+// Copyright ï¿½ Amer Koleci and Contributors.
 // Licensed under the MIT License (MIT). See LICENSE in the repository root for more information.
 
 using System.Runtime.CompilerServices;
@@ -75,17 +75,29 @@ public static unsafe class UnsafeUtilities
 
     public static void* Alloc(int byteCount) 
     {
+#if NET6_0_OR_GREATER
         return NativeMemory.Alloc((nuint)byteCount);
+#else
+        return (void*)Marshal.AllocHGlobal(byteCount);
+#endif
     }
 
     public static void* Alloc(int elementCount, int elementSize)
     {
+#if NET6_0_OR_GREATER
         return NativeMemory.Alloc((nuint)elementCount, (nuint)elementSize);
+#else
+        return Alloc(elementCount * elementSize);
+#endif
     }
 
     public static T* Alloc<T>() where T : unmanaged
     {
+#if NET6_0_OR_GREATER
         return (T*)NativeMemory.Alloc((nuint)sizeof(T));
+#else
+        return (T*)Marshal.AllocHGlobal(sizeof(T));
+#endif
     }
 
     public static T* Alloc<T>(int elementCount) where T : unmanaged
@@ -123,12 +135,20 @@ public static unsafe class UnsafeUtilities
 
     public static void Free(void* ptr)
     {
+#if NET6_0_OR_GREATER
         NativeMemory.Free(ptr);
+#else
+        Marshal.FreeHGlobal((nint)ptr);
+#endif
     }
 
     public static void Free(IntPtr ptr)
     {
+#if NET6_0_OR_GREATER
         NativeMemory.Free(ptr.ToPointer());
+#else
+        Marshal.FreeHGlobal(ptr);
+#endif
     }
 
     public static IntPtr AllocToPointer<T>(T[]? values) where T : unmanaged

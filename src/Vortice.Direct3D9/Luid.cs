@@ -81,11 +81,13 @@ public readonly struct Luid : IEquatable<Luid>
         return (((long)HighPart) << 32 | LowPart).ToString(format, formatProvider);
     }
 
+#if NETSTANDARD2_1_OR_GREATER
     /// <inheritdoc/>
     public bool TryFormat(Span<char> destination, out int charsWritten, ReadOnlySpan<char> format, IFormatProvider? provider)
     {
         return (((long)HighPart) << 32 | LowPart).TryFormat(destination, out charsWritten, format, provider);
     }
+#endif
 
     /// <summary>
     /// Check whether two <see cref="Luid"/> values are equal.
