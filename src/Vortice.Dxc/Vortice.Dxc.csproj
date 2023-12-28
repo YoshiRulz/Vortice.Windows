@@ -9,6 +9,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Shim4DotNetFramework.NativeLibrary"
+      Condition=" '$(TargetFramework)' == 'netstandard2.0' " />
+
     <Using Include="System.Diagnostics.CodeAnalysis"/>
     <Using Include="System.Runtime.InteropServices" />
     <Using Include="SharpGen.Runtime" />
