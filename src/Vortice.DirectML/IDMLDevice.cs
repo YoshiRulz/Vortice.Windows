@@ -14,7 +14,7 @@ public partial class IDMLDevice
 #if NET5_0_OR_GREATER
         => CheckFeatureLevelsSupport(Enum.GetValues<FeatureLevel>());
 #else
-        => CheckFeatureLevelsSupport(Enum.GetValues(typeof(FeatureLevel)));
+        => CheckFeatureLevelsSupport((FeatureLevel[])Enum.GetValues(typeof(FeatureLevel)));
 #endif
 
     /// <summary>

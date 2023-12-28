@@ -19,7 +19,16 @@ public static partial class DirectStorage
                 return IntPtr.Zero;
             }
 
+#if NET5_0_OR_GREATER
             string rid = RuntimeInformation.RuntimeIdentifier;
+#else
+            string rid = RuntimeInformation.ProcessArchitecture switch
+            {
+                Architecture.X64 => "win-x64",
+                Architecture.Arm64 => "win-arm64",
+                _ => throw new NotSupportedException("Invalid process architecture")
+            };
+#endif
 
             // Test whether the native libraries are present in the same folder of the executable
             // (which is the case when the program was built with a runtime identifier), or whether
