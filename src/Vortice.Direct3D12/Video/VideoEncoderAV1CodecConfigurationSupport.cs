@@ -62,7 +62,7 @@ public partial class VideoEncoderAV1CodecConfigurationSupport
 #else
             unsafe
             {
-                fixed (void* p = this)
+                fixed (void* p = &e0)
                 {
                     return new(p, 9);
                 }
@@ -97,7 +97,7 @@ public partial class VideoEncoderAV1CodecConfigurationSupport
 #else
             unsafe
             {
-                fixed (void* p = this)
+                fixed (void* p = &e0)
                 {
                     return new(p, 4);
                 }

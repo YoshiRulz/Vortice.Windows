@@ -119,7 +119,7 @@ public partial struct BlendDescription
 #else
             unsafe
             {
-                fixed (void* p = this)
+                fixed (void* p = &e0)
                 {
                     return new(p, 8);
                 }
