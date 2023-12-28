@@ -5,6 +5,9 @@ namespace Vortice.DirectStorage;
 
 public static partial class DirectStorage
 {
+#if !NETCOREAPP3_0_OR_GREATER
+    public delegate nint DllImportResolver(string libraryName, System.Reflection.Assembly assembly, DllImportSearchPath? searchPath);
+#endif
     public static event DllImportResolver? ResolveLibrary;
 
     static DirectStorage()
@@ -48,7 +51,9 @@ public static partial class DirectStorage
             return IntPtr.Zero;
         };
 
+#if NETCOREAPP3_0_OR_GREATER // https://github.com/udaken/Shim4DotNetFramework.NativeLibrary/issues/1
         NativeLibrary.SetDllImportResolver(System.Reflection.Assembly.GetExecutingAssembly(), OnDllImport);
+#endif
     }
 
     /// <summary>The default <see cref="DllImportResolver"/> for TerraFX.Interop.Windows.</summary>

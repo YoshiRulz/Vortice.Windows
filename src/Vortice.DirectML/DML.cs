@@ -7,7 +7,9 @@ namespace Vortice.DirectML;
 
 public static partial class DML
 {
-
+#if !NETCOREAPP3_0_OR_GREATER
+    public delegate nint DllImportResolver(string libraryName, System.Reflection.Assembly assembly, DllImportSearchPath? searchPath);
+#endif
     public static event DllImportResolver? ResolveLibrary;
 
     static DML()
@@ -65,7 +67,9 @@ public static partial class DML
             return IntPtr.Zero;
         };
 
+#if NETCOREAPP3_0_OR_GREATER // https://github.com/udaken/Shim4DotNetFramework.NativeLibrary/issues/1
         NativeLibrary.SetDllImportResolver(System.Reflection.Assembly.GetExecutingAssembly(), OnDllImport);
+#endif
     }
 
     /// <summary>The default <see cref="DllImportResolver"/> for TerraFX.Interop.Windows.</summary>
