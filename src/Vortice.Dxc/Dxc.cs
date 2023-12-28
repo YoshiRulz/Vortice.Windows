@@ -142,7 +142,7 @@ public static partial class Dxc
             return IntPtr.Zero;
         };
 
-#if !NETCOREAPP3_0_OR_GREATER // https://github.com/udaken/Shim4DotNetFramework.NativeLibrary/issues/1
+#if NETCOREAPP3_0_OR_GREATER // https://github.com/udaken/Shim4DotNetFramework.NativeLibrary/issues/1
         NativeLibrary.SetDllImportResolver(System.Reflection.Assembly.GetExecutingAssembly(), OnDllImport);
 #endif
     }

@@ -118,7 +118,7 @@ public partial struct BlendDescription
             return MemoryMarshal.CreateSpan(ref e0, 8);
 #else
             unsafe {
-                return new((void*)&e0, 8);
+                return new((void*)&this, 8);
             }
 #endif
         }

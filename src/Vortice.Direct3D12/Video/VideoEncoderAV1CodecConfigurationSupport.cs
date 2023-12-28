@@ -61,7 +61,7 @@ public partial class VideoEncoderAV1CodecConfigurationSupport
             return MemoryMarshal.CreateSpan(ref e0, 9);
 #else
             unsafe {
-                return new((void*)&e0, 9);
+                return new((void*)&this, 9);
             }
 #endif
         }
@@ -92,7 +92,7 @@ public partial class VideoEncoderAV1CodecConfigurationSupport
             return MemoryMarshal.CreateSpan(ref e0, 4);
 #else
             unsafe {
-                return new((void*)&e0, 4);
+                return new((void*)&this, 4);
             }
 #endif
         }
