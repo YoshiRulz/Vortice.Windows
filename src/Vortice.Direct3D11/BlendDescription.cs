@@ -149,8 +149,12 @@ public partial struct BlendDescription// : IEquatable<BlendDescription>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1_OR_GREATER
             return MemoryMarshal.CreateSpan(ref e0, 8);
 #else
-            unsafe {
-                return new((void*)&this, 8);
+            unsafe
+            {
+                fixed (void* p = this)
+                {
+                    return new(p, 8);
+                }
             }
 #endif
         }
