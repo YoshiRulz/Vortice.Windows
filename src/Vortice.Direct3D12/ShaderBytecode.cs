@@ -45,7 +45,7 @@ public partial class ShaderBytecode
         {
             if (pShaderBytecode != null)
             {
-                NativeMemory.Free(pShaderBytecode);
+                UnsafeUtilities.Free(pShaderBytecode);
             }
         }
     }

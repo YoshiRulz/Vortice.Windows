@@ -16,6 +16,6 @@ public partial class IVisualInteractionSourceInterop : ComObject
 
     public unsafe Result TryRedirectForManipulation(ref PointerInfo pointerInfo)
     {
-        return ((delegate* unmanaged<IntPtr, ref PointerInfo, int>)this[3])(NativePointer, ref pointerInfo);
+        return ((delegate* unmanaged[Stdcall]<IntPtr, ref PointerInfo, int>)this[3])(NativePointer, ref pointerInfo);
     }
 }

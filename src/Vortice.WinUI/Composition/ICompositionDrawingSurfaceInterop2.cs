@@ -29,6 +29,6 @@ public unsafe partial class ICompositionDrawingSurfaceInterop2 : ComObject
 
     private Result CopySurface(IntPtr destinationResource, int destinationOffsetX, int destinationOffsetY, RawRect* sourceRectangle)
     {
-        return ((delegate* unmanaged<IntPtr, IntPtr, int, int, RawRect *, int>)this[3])(NativePointer, destinationResource, destinationOffsetX, destinationOffsetY, sourceRectangle);
+        return ((delegate* unmanaged[Stdcall]<IntPtr, IntPtr, int, int, RawRect *, int>)this[3])(NativePointer, destinationResource, destinationOffsetX, destinationOffsetY, sourceRectangle);
     }
 }

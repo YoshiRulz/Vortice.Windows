@@ -28,7 +28,11 @@ public class KeyboardState : IDeviceState<RawKeyboardState, KeyboardUpdate>
 
     static KeyboardState()
     {
+#if NET5_0_OR_GREATER
         foreach (Key key in Enum.GetValues<Key>())
+#else
+        foreach (Key key in Enum.GetValues(typeof(Key)))
+#endif
         {
             _allKeys.Add(key);
         }

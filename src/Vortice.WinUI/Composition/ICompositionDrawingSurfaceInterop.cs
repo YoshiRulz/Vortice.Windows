@@ -23,7 +23,7 @@ public unsafe partial class ICompositionDrawingSurfaceInterop : ComObject
         fixed (Point* offsetPtr = &offset)
         {
             Guid iid = typeof(T).GUID;
-            Result result = ((delegate* unmanaged<IntPtr, RawRect, void*, void*, Point*, int>)this[3])(NativePointer, updateRectRaw, &iid, &updateObjectPtr, offsetPtr);
+            Result result = ((delegate* unmanaged[Stdcall]<IntPtr, RawRect, void*, void*, Point*, int>)this[3])(NativePointer, updateRectRaw, &iid, &updateObjectPtr, offsetPtr);
             updateObject = updateObjectPtr != IntPtr.Zero ? MarshallingHelpers.FromPointer<T>(updateObjectPtr)! : null;
             return result;
         }
@@ -37,7 +37,7 @@ public unsafe partial class ICompositionDrawingSurfaceInterop : ComObject
         fixed (Point* offsetPtr = &offset)
         {
             Guid iid = typeof(T).GUID;
-            Result result = ((delegate* unmanaged<IntPtr, RawRect, void*, void*, Point*, int>)this[3])(NativePointer, updateRectRaw, &iid, &updateObjectPtr, offsetPtr);
+            Result result = ((delegate* unmanaged[Stdcall]<IntPtr, RawRect, void*, void*, Point*, int>)this[3])(NativePointer, updateRectRaw, &iid, &updateObjectPtr, offsetPtr);
             result.CheckError();
             return MarshallingHelpers.FromPointer<T>(updateObjectPtr)!;
         }
@@ -45,42 +45,42 @@ public unsafe partial class ICompositionDrawingSurfaceInterop : ComObject
 
     public Result EndDraw()
     {
-        Result result = ((delegate* unmanaged<IntPtr, int>)this[4])(NativePointer);
+        Result result = ((delegate* unmanaged[Stdcall]<IntPtr, int>)this[4])(NativePointer);
         return result;
     }
 
     public Result Resize(Size sizePixels)
     {
-        return ((delegate* unmanaged<IntPtr, Size, int>)this[5])(NativePointer, sizePixels);
+        return ((delegate* unmanaged[Stdcall]<IntPtr, Size, int>)this[5])(NativePointer, sizePixels);
     }
 
     public Result Scroll(int offsetX, int offsetY)
     {
-        return ((delegate* unmanaged<IntPtr, RawRect*, RawRect*, int, int, int>)this[6])(NativePointer, null, null, offsetX, offsetY);
+        return ((delegate* unmanaged[Stdcall]<IntPtr, RawRect*, RawRect*, int, int, int>)this[6])(NativePointer, null, null, offsetX, offsetY);
     }
 
     public Result Scroll(Rectangle clipRect, int offsetX, int offsetY)
     {
         RawRect clipRectRaw = clipRect;
-        return ((delegate* unmanaged<IntPtr, RawRect*, RawRect*, int, int, int>)this[6])(NativePointer, null, &clipRectRaw, offsetX, offsetY);
+        return ((delegate* unmanaged[Stdcall]<IntPtr, RawRect*, RawRect*, int, int, int>)this[6])(NativePointer, null, &clipRectRaw, offsetX, offsetY);
     }
 
     public Result Scroll(Rectangle scrollRect, Rectangle clipRect, int offsetX, int offsetY)
     {
         RawRect scrollRectRaw = scrollRect;
         RawRect clipRectRaw = clipRect;
-        return ((delegate* unmanaged<IntPtr, RawRect*, RawRect*, int, int, int>)this[6])(NativePointer, &scrollRectRaw, &clipRectRaw, offsetX, offsetY);
+        return ((delegate* unmanaged[Stdcall]<IntPtr, RawRect*, RawRect*, int, int, int>)this[6])(NativePointer, &scrollRectRaw, &clipRectRaw, offsetX, offsetY);
     }
 
     public Result SuspendDraw()
     {
-        Result result = ((delegate* unmanaged<IntPtr, int>)this[7])(NativePointer);
+        Result result = ((delegate* unmanaged[Stdcall]<IntPtr, int>)this[7])(NativePointer);
         return result;
     }
 
     public Result ResumeDraw()
     {
-        Result result = ((delegate* unmanaged<IntPtr, int>)this[8])(NativePointer);
+        Result result = ((delegate* unmanaged[Stdcall]<IntPtr, int>)this[8])(NativePointer);
         return result;
     }
 }

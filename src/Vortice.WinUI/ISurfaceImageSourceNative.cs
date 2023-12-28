@@ -58,7 +58,7 @@ public unsafe class ISurfaceImageSourceNative : ComObject
         Result result;
         fixed (Point* offsetPtr = &offset)
         {
-            result = ((delegate* unmanaged<IntPtr, RawRect, void*, Point*, int>)this[4])(NativePointer, updateRectRaw, &surfacePtr, offsetPtr);
+            result = ((delegate* unmanaged[Stdcall]<IntPtr, RawRect, void*, Point*, int>)this[4])(NativePointer, updateRectRaw, &surfacePtr, offsetPtr);
         }
 
         surface = surfacePtr != IntPtr.Zero ? new IDXGISurface(surfacePtr) : null;
@@ -67,7 +67,7 @@ public unsafe class ISurfaceImageSourceNative : ComObject
 
     public Result EndDraw()
     {
-        Result result = ((delegate* unmanaged<IntPtr, int>)this[5])(NativePointer);
+        Result result = ((delegate* unmanaged[Stdcall]<IntPtr, int>)this[5])(NativePointer);
         return result;
     }
 }

@@ -57,7 +57,13 @@ public partial class VideoEncoderAV1CodecConfigurationSupport
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public Span<VideoEncoderAv1RestorationSupportFlags> AsSpan()
         {
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1_OR_GREATER
             return MemoryMarshal.CreateSpan(ref e0, 9);
+#else
+            unsafe {
+                return new((void*)&e0, 9);
+            }
+#endif
         }
     }
 
@@ -82,7 +88,13 @@ public partial class VideoEncoderAV1CodecConfigurationSupport
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public Span<VideoEncoderAv1TxModeFlags> AsSpan()
         {
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1_OR_GREATER
             return MemoryMarshal.CreateSpan(ref e0, 4);
+#else
+            unsafe {
+                return new((void*)&e0, 4);
+            }
+#endif
         }
     }
 

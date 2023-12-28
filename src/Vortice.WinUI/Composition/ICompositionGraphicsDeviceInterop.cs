@@ -15,7 +15,7 @@ public partial class ICompositionGraphicsDeviceInterop : ComObject
     public unsafe Result GetRenderingDevice<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] T>(out T? device) where T : ComObject
     {
         IntPtr devicePtr = default;
-        Result result = (Result)((delegate* unmanaged<IntPtr, void*, int>)this[3])(NativePointer, &devicePtr);
+        Result result = (Result)((delegate* unmanaged[Stdcall]<IntPtr, void*, int>)this[3])(NativePointer, &devicePtr);
 
         if (result.Failure)
         {
@@ -30,6 +30,6 @@ public partial class ICompositionGraphicsDeviceInterop : ComObject
     public unsafe Result SetRenderingDevice(IUnknown device)
     {
         IntPtr devicePtr = MarshallingHelpers.ToCallbackPtr<IUnknown>(device);
-        return (Result)((delegate* unmanaged<IntPtr, IntPtr, int>)this[4])(NativePointer, devicePtr);
+        return (Result)((delegate* unmanaged[Stdcall]<IntPtr, IntPtr, int>)this[4])(NativePointer, devicePtr);
     }
 }

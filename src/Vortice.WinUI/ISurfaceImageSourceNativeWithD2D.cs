@@ -59,26 +59,26 @@ public unsafe class ISurfaceImageSourceNativeWithD2D : ComObject
         fixed (void* offset_ = &offset)
         fixed (void* updateObject_ = &updateObject)
         {
-            Result result = ((delegate* unmanaged<IntPtr, void*, void*, void*, void*, int>)this[4])(NativePointer, &updateRect, &iid, updateObject_, offset_);
+            Result result = ((delegate* unmanaged[Stdcall]<IntPtr, void*, void*, void*, void*, int>)this[4])(NativePointer, &updateRect, &iid, updateObject_, offset_);
             return result;
         }
     }
 
     public Result EndDraw()
     {
-        Result result = ((delegate* unmanaged<IntPtr, int>)this[5])(NativePointer);
+        Result result = ((delegate* unmanaged[Stdcall]<IntPtr, int>)this[5])(NativePointer);
         return result;
     }
 
     public Result SuspendDraw()
     {
-        Result result = ((delegate* unmanaged<IntPtr, int>)this[6])(NativePointer);
+        Result result = ((delegate* unmanaged[Stdcall]<IntPtr, int>)this[6])(NativePointer);
         return result;
     }
 
     public Result ResumeDraw()
     {
-        Result result = ((delegate* unmanaged<IntPtr, int>)this[7])(NativePointer);
+        Result result = ((delegate* unmanaged[Stdcall]<IntPtr, int>)this[7])(NativePointer);
         return result;
     }
 }
