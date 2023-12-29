@@ -117,7 +117,10 @@ public partial struct BlendDescription
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1_OR_GREATER
             return MemoryMarshal.CreateSpan(ref e0, 8);
 #else
-            return new(Unsafe.AsPointer(ref e0), 8);
+            unsafe
+            {
+                return new(Unsafe.AsPointer(ref e0), 8);
+            }
 #endif
         }
     }

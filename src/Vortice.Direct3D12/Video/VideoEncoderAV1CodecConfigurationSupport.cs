@@ -60,7 +60,10 @@ public partial class VideoEncoderAV1CodecConfigurationSupport
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1_OR_GREATER
             return MemoryMarshal.CreateSpan(ref e0, 9);
 #else
-            return new(Unsafe.AsPointer(ref e0), 9);
+            unsafe
+            {
+                return new(Unsafe.AsPointer(ref e0), 9);
+            }
 #endif
         }
     }
@@ -89,7 +92,10 @@ public partial class VideoEncoderAV1CodecConfigurationSupport
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP2_1_OR_GREATER
             return MemoryMarshal.CreateSpan(ref e0, 4);
 #else
-            return new(Unsafe.AsPointer(ref e0), 4);
+            unsafe
+            {
+                return new(Unsafe.AsPointer(ref e0), 4);
+            }
 #endif
         }
     }
